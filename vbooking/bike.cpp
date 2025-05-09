@@ -44,7 +44,10 @@ bool bike::checkAvailability (){
 	}
 	while(std::getline(inFile, tempbuffer))
 	{
-		
+		for(int i = 0; i < tempbuffer.length(); i++)
+		{
+			std::cout << tempbuffer[i] << std::endl;
+		}
 		std::cout << tempbuffer << std::endl;
 	}
 	
