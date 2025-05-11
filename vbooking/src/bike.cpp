@@ -3,16 +3,33 @@
 #include <fstream>
 typedef class Bike{
 	int RegNo;
-	std::string BikeType;
-	bool BookedStatus;
+	std::string BikeType; /* which kind of bike it*/
+	bool BookedStatus; /* Showing status bike is booked or not */
+	int NumberOfBikes[3]; /*1st index: Total number of bike; 2nd index: Available bikes; 3rd index: Booked bikes*/
 public:
 	Bike(): RegNo(0), BikeType("NONE"), BookedStatus(0){}
 
 	void storeVehicle_info(int regno, std::string biketype, bool status);
 	bool checkAvailability();
+	int BikeCount();
 
 	~Bike(){}
 }bike;
+
+int bike::BikeCount(){
+	// std::ifstream inFile("data");
+	// int count = NULL; 
+
+	// if(!inFile)
+	// {
+	// 	std::cout << "Error: could not open for reading." << std::endl;
+	// 	return;
+	// }
+
+	// while()
+	return 0;
+
+}
 
 void bike::storeVehicle_info(int regno, std::string biketype, bool status){
 
@@ -25,9 +42,6 @@ void bike::storeVehicle_info(int regno, std::string biketype, bool status){
 	
 	outFile << regno << " - " << biketype << " - " <<  status << std::endl;
 	
-	/*outFile << "Registration Number: " << regno << '\n';
-    	outFile << "Bike Type: " << biketype << '\n';
-    	outFile << "Status: " << (status ? "Available" : "Unavailable") << '\n';*/
 	outFile.close();
 
 	std::cout << "Info saved!!" << std::endl;
@@ -42,30 +56,13 @@ bool bike::checkAvailability (){
 		std::cout << "Error: could not open for reading." << std::endl;
 		return false;
 	}
-	auto j = 0;
-	auto flag = false;
-	while(j < 10){
-		while(std::getline(inFile, tempbuffer))
+	std::cout << "Available Bikes:" << std::endl;
+	while(std::getline(inFile, tempbuffer))
+	{
+		if((tempbuffer[tempbuffer.length()-1]) != '1')
 		{
-			for(int i = 0; i < tempbuffer.length(); i++)
-			{
-				if(tempbuffer[i] == '-')
-				{
-					flag = true;
-				}
-				else if((flag != true) && (tempbuffer[tempbuffer.length()-1] != '1'))
-				{
-					std::cout << tempbuffer[i];
-				}
-				if(((tempbuffer[i] == '0') /*|| (tempbuffer[i] == '1')*/) && (tempbuffer[i+1] == '\0'))
-				{
-					std::cout <<"Avaialble :"<< tempbuffer[i] << std::endl;
-				}
-			}
-			flag = false;
+			std::cout << tempbuffer << std::endl;
 		}
-		flag = false;
-		j++;
 	}
 	inFile.close();
 	return false;
