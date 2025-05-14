@@ -5,6 +5,9 @@ SignUp::SignUp(){
 }
 
 void SignUp::RegisterNewAccount(void){
+/* Using this fucntion user can create there account and the given info will save in 
+information file (Information file is creating in this function).
+*/
     signup b;
     std::cout << "Register New Account" << std::endl;
 
@@ -26,12 +29,20 @@ void SignUp::RegisterNewAccount(void){
     {
         /* follow standard template.*/
     }
+    if(b.EmailVerification())
+    {
+        std::cout << "Please enter valid email." << std::endl; 
+    }
     fopen << b.UserName << "--" << b.Email << "--" << b.Password << std::endl;
     fopen.close();
     std::cout << "Info saved!!" << std::endl;
 }
 
-bool EmailVerification(){
+bool SignUp::EmailVerification(){
+/*Email verification code whicle can verify email syntex like name@domain.com
+some domain like gmail.com, yahoo.com, yahoo.in, hotmain.in, msn.com
+*/
+
     return false;
 }
 
