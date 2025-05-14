@@ -1,4 +1,5 @@
 #include <iostream>
+#include <fstream>
 using namespace std;
 
 typedef class SignUp{
@@ -7,7 +8,7 @@ typedef class SignUp{
     string Password;
 public:
     SignUp();
-    void SignUp(void);
+    void RegisterNewAccount(void);
     bool EmailVerification();
     bool PasswordCheck(); /* use A-Z, a-z, 0-9, !@#$%^&* */
     void PasswordEncription(); /* need to learn first*/

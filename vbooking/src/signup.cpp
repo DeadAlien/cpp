@@ -1,45 +1,67 @@
-/*use can enter there details and crate account, info going to save in flile 
-future scope: integrate with Data base management system.
-.*/
-
-
 #include "signup.h"
 
-void signup::SignUp(void){
-
-    string name, email, password;
-
-    std::cout << "Name: " << endl;
-    std::cin >> name;
-    std::cout << "Email ID: " << std::endl;
-    std::cin >> email;
-    std::cout << "Password: " << std::endl;
-    PasswordCheck();
+SignUp::SignUp(){
+    std::cout << "Signup Object is created" << std::endl;
 }
 
-/* use A-Z, a-z, 0-9, !@#$%^&* */
-bool PasswordCheck(){
-    std::string password;
-    char ch;
-    char i = 0;
-    setStdinEcho(false);
-    while (i < 12) {
-    ch = getchar();
-    if ((ch == '\n') && (i > 11)) break;    // Enter pressed → break loop
+void SignUp::RegisterNewAccount(void){
+    signup b;
+    std::cout << "Register New Account" << std::endl;
 
-    if (ch == 127 || ch == '\b') {  // Backspace
-        if (!password.empty()) {
-            password.pop_back();         // Remove last char
-            std::cout << "\b \b";        // Move back, print space, move back again
-        }
-    } else {
-        password += ch;
-        std::cout << '*';                // Show * instead of char
+    std::cout << "Name: " << endl;
+    std::cin >> b.UserName;
+    std::cout << "Email: " << endl;
+    std::cin >> b.Email;
+    std::cout << "Password: " << endl;
+    std::cin >> b.Password;
+
+    std::ofstream fopen("information");
+
+    if(!fopen)
+    {
+        std::cout << "Error:Information: Could not open file for writing." << std::endl;
+        return;
     }
-    i++;
-    setStdinEcho(true);
+    else
+    {
+        /* follow standard template.*/
+    }
+    fopen << b.UserName << "--" << b.Email << "--" << b.Password << std::endl;
+    fopen.close();
+    std::cout << "Info saved!!" << std::endl;
+}
+
+bool EmailVerification(){
+    return false;
+}
+
+SignUp::~SignUp(){
+    std::cout << "Signup Object is destroyed" << std::endl;
 }
 
 int main(){
+    std::cout << "WELCOME TO VEHICLE BOOKING" << std::endl;
+    char opt = NULL ;
+    while(1)
+    {
+        std::cout << "1) Register New Account" << std::endl;
+        std::cout << "\n2) Login" << std::endl;
+        std::cout << "\n3) Exit" << std::endl;
+        std::cin >> opt;
 
+        signup a;
+        switch(opt)
+        {
+            case '1':
+                   a.RegisterNewAccount();
+                   break;
+            case '2':break;
+            case '3': return 0; break;
+            default: [](char opt)
+                        {
+                            std::cout << opt << " is invalid option. Please choose correct option." << std::endl;
+                        }(opt); 
+                        break;
+        }
+    }
 }
