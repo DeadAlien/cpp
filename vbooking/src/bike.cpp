@@ -3,16 +3,33 @@
 #include <fstream>
 typedef class Bike{
 	int RegNo;
-	std::string BikeType;
-	bool BookedStatus;
+	std::string BikeType; /* which kind of bike it*/
+	bool BookedStatus; /* Showing status bike is booked or not */
+	int NumberOfBikes[3]; /*1st index: Total number of bike; 2nd index: Available bikes; 3rd index: Booked bikes*/
 public:
 	Bike(): RegNo(0), BikeType("NONE"), BookedStatus(0){}
 
 	void storeVehicle_info(int regno, std::string biketype, bool status);
 	bool checkAvailability();
+	int BikeCount();
 
 	~Bike(){}
 }bike;
+
+int bike::BikeCount(){
+	// std::ifstream inFile("data");
+	// int count = NULL; 
+
+	// if(!inFile)
+	// {
+	// 	std::cout << "Error: could not open for reading." << std::endl;
+	// 	return;
+	// }
+
+	// while()
+	return 0;
+
+}
 
 void bike::storeVehicle_info(int regno, std::string biketype, bool status){
 
@@ -25,9 +42,6 @@ void bike::storeVehicle_info(int regno, std::string biketype, bool status){
 	
 	outFile << regno << " - " << biketype << " - " <<  status << std::endl;
 	
-	/*outFile << "Registration Number: " << regno << '\n';
-    	outFile << "Bike Type: " << biketype << '\n';
-    	outFile << "Status: " << (status ? "Available" : "Unavailable") << '\n';*/
 	outFile.close();
 
 	std::cout << "Info saved!!" << std::endl;
@@ -42,19 +56,21 @@ bool bike::checkAvailability (){
 		std::cout << "Error: could not open for reading." << std::endl;
 		return false;
 	}
+	std::cout << "Available Bikes:" << std::endl;
 	while(std::getline(inFile, tempbuffer))
 	{
-		
-		std::cout << tempbuffer << std::endl;
+		if((tempbuffer[tempbuffer.length()-1]) != '1')
+		{
+			std::cout << tempbuffer << std::endl;
+		}
 	}
-	
 	inFile.close();
-	
 	return false;
 }
 
 int main(){
 	bike a;
-	a.storeVehicle_info(123, "A", 0);
-	a.checkAvailability();
+		//a.storeVehicle_info(123, "A", 0);
+		a.checkAvailability();
+	
 }
