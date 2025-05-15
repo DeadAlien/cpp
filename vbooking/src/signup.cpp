@@ -42,6 +42,12 @@ bool SignUp::EmailVerification(){
 /*Email verification code whicle can verify email syntex like name@domain.com
 some domain like gmail.com, yahoo.com, yahoo.in, hotmain.in, msn.com
 */
+/*
+    1. Check string '@' and '.' present or not.
+    2. Make sure that it should not present in start and end of the sttring.
+    3. '.' should present after '@'. 
+*/
+
 
     return false;
 }
