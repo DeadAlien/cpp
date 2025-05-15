@@ -1,7 +1,7 @@
 #include "signup.h"
 
 SignUp::SignUp(){
-    std::cout << "Signup Object is created" << std::endl;
+    //std::cout << "Signup Object is created" << std::endl;
 }
 
 void SignUp::RegisterNewAccount(void){
@@ -11,12 +11,12 @@ information file (Information file is creating in this function).
     signup b;
     std::cout << "Register New Account" << std::endl;
 
-    std::cout << "Name: " << endl;
-    std::cin >> b.UserName;
+    // std::cout << "Name: " << endl;
+    // std::cin >> b.UserName;
     std::cout << "Email: " << endl;
     std::cin >> b.Email;
-    std::cout << "Password: " << endl;
-    std::cin >> b.Password;
+    // std::cout << "Password: " << endl;
+    // std::cin >> b.Password;
 
     std::ofstream fopen("information");
 
@@ -29,7 +29,7 @@ information file (Information file is creating in this function).
     {
         /* follow standard template.*/
     }
-    if(b.EmailVerification())
+    if(b.EmailVerification() != true)
     {
         std::cout << "Please enter valid email." << std::endl; 
     }
@@ -42,12 +42,21 @@ bool SignUp::EmailVerification(){
 /*Email verification code whicle can verify email syntex like name@domain.com
 some domain like gmail.com, yahoo.com, yahoo.in, hotmain.in, msn.com
 */
+/*
+    1. Check string '@' and '.' present or not.
+    2. Make sure that it should not present in start and end of the sttring.
+    3. '.' should present after '@'. 
+    4. Space should not be present.
+*/
+    std::cout << "Email verification executation" << std::endl;
+    signup b;
 
+    std::cout << b.Email << std::endl;
     return false;
 }
 
 SignUp::~SignUp(){
-    std::cout << "Signup Object is destroyed" << std::endl;
+   // std::cout << "Signup Object is destroyed" << std::endl;
 }
 
 int main(){
