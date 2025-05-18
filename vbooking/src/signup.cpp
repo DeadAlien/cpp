@@ -1,8 +1,8 @@
 #include "signup.h"
+#include <iostream>
+#include <fstream>
+#include <cstdlib>
 
-SignUp::SignUp(){
-    //std::cout << "Signup Object is created" << std::endl;
-}
 
 bool SignUp::EmailVerification(){
 /*Email verification code whicle can verify email syntex like name@domain.com
@@ -133,36 +133,7 @@ information file (Information file is creating in this function).
     fopen << b.UserName << "--" << b.Email << "--" << b.Password << std::endl;
     fopen.close();
     std::cout << "Info saved!!" << std::endl;
-}
 
-
-SignUp::~SignUp(){
-   // std::cout << "Signup Object is destroyed" << std::endl;
-}
-
-int main(){
-    std::cout << "WELCOME TO VEHICLE BOOKING" << std::endl;
-    char opt = NULL ;
-    while(1)
-    {
-        std::cout << "1) Register New Account" << std::endl;
-        std::cout << "\n2) Login" << std::endl;
-        std::cout << "\n3) Exit" << std::endl;
-        std::cin >> opt;
-
-        signup a;
-        switch(opt)
-        {
-            case '1':
-                   a.RegisterNewAccount();
-                   break;
-            case '2':break;
-            case '3': return 0; break;
-            default: [](char opt)
-                        {
-                            std::cout << opt << " is invalid option. Please choose correct option." << std::endl;
-                        }(opt); 
-                        break;
-        }
-    }
+    std::cout << "Press Enter to return to the main menu..." << std::endl;
+    std::cin.get();
 }

@@ -1,5 +1,7 @@
-#include <iostream>
-#include <fstream>
+#ifndef SIGNUP_H
+#define SIGNUP_H
+
+#include <string>
 using namespace std;
 
 typedef class SignUp{
@@ -7,11 +9,12 @@ typedef class SignUp{
     string Email;
     string Password;
 public:
-    SignUp();
+    SignUp(){};
     void RegisterNewAccount(void);
     bool EmailVerification();
     bool PasswordCheck(); /* use A-Z, a-z, 0-9, !@#$%^&* */
     void PasswordEncription(); /* need to learn first*/
-
-    ~SignUp();
+    ~SignUp(){};
 }signup;
+
+#endif // SIGNUP_H
