@@ -14,7 +14,10 @@ information file (Information file is creating in this function).
     // std::cout << "Name: " << endl;
     // std::cin >> b.UserName;
     std::cout << "Email: " << endl;
-    std::cin >> b.Email;
+    if(b.EmailVerification() != true)
+    {
+        std::cout << "Please enter valid email." << std::endl; 
+    }
     // std::cout << "Password: " << endl;
     // std::cin >> b.Password;
 
@@ -29,10 +32,7 @@ information file (Information file is creating in this function).
     {
         /* follow standard template.*/
     }
-    if(b.EmailVerification() != true)
-    {
-        std::cout << "Please enter valid email." << std::endl; 
-    }
+
     fopen << b.UserName << "--" << b.Email << "--" << b.Password << std::endl;
     fopen.close();
     std::cout << "Info saved!!" << std::endl;
@@ -48,10 +48,39 @@ some domain like gmail.com, yahoo.com, yahoo.in, hotmain.in, msn.com
     3. '.' should present after '@'. 
     4. Space should not be present.
 */
-    std::cout << "Email verification executation" << std::endl;
-    signup b;
 
-    std::cout << b.Email << std::endl;
+    signup ev;
+    cin >> ev.Email;
+    string email = ev.Email;
+    int atindex = -1;
+    int dotindex = -1;
+    int len = email.length();
+    char ch;
+    for(int i = 0; i < len; i++)
+    {
+        ch = email[i];
+
+        if((ch == ' ' ))
+        {
+            cout << "dev_ not valid" << endl;
+             return false;
+        }
+        if(ch == '@')
+        {
+            atindex = i; 
+        }
+        if(ch == '.')
+        {
+            dotindex = i;
+        }
+
+        if( (dotindex > atindex) && (atindex != 0) && (atindex != len)
+            && (dotindex != 0) && (dotindex != len) 
+        )
+        {
+            return true;
+        }
+    }
     return false;
 }
 
